@@ -63,6 +63,9 @@ Make sure to use root as MySQL User (Might face connection issue)
 
 4. `docker-compose up --build -d` 
 
+## Run Test
+-  `python manage.py test`
+
 ## API Endpoints
 - POST /api/v1/signup/
 - POST /api/v1/login/
