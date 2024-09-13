@@ -64,7 +64,8 @@ Make sure to use root as MySQL User (Might face connection issue)
 4. `docker-compose up --build -d` 
 
 ## Run Test
--  `python manage.py test`
+-  `python manage.py test` [Normal Scenario]
+-  `docker-compose exec web python manage.py test` [Setup with Docker]
 
 ## API Endpoints
 - POST /api/v1/signup/
