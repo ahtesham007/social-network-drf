@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "27a91062-3b4a-45e9-99a7-31337d88669c",
+		"name": "Social Network",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"zen4@mail.com\",\r\n    \"password\":\"zen098\",\r\n    \"username\": \"zen4\",\r\n    \"first_name\": \"zen4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/signup/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"signup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"zen4@mail.com\",\r\n    \"password\":\"zen098\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/login/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{devBaseURL}}/user/?search=",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"user",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friend Request List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{devBaseURL}}/friend-requests/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"friend-requests",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Friends List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{devBaseURL}}/friends/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"friends",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Friend Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/friend-requests/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"friend-requests",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept/Reject Friend Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"action\": \"accepted\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/friend-request-action/1/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"friend-request-action",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "Token 20acad89a7e69ec8bd4591c52afbb1606b740afa",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "devBaseURL",
+			"value": "http://192.168.1.40:8000/api/v1",
+			"type": "string"
+		}
+	]
+}

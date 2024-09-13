@@ -1,0 +1,21 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+
+# Django
+*.log
+
+# IDEs and editors
+.vscode/
+
+# Django stuff:
+*.log
+
+# Environments
+.env
+.venv/
+venv/
+
