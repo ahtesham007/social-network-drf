@@ -99,10 +99,13 @@ Make sure to use root as MySQL User (Might face connection issue)
 -  `docker-compose exec web python manage.py test` [Setup with Docker]
 
 ## API Endpoints
-- POST /api/v1/signup/
-- POST /api/v1/login/
-- GET /api/v1/user/?search=ba
-- GET /api/v1/friend-requests/
-- GET /api/v1/friends/
-- POST /api/v1/friend-requests/
+- POST /api/v1/signup/  RBAC [admin, editor, viewer]
+- POST /api/v1/login/   Return Access & Refresh Token
+- GET /api/v1/user/?search=ba 
+- GET /api/v1/friend-requests?ordering=sent_at  Use [-sent_at for descending]
+- GET /api/v1/friends/ 
+- POST /api/v1/friend-request/
 - PATCH /api/v1/friend-request-action/2/
+- POST /api/v1/token/refresh/
+- POST /api/v1/block/
+- DELETE /api/v1/block/  Unblock
