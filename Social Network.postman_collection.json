@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"zen4@mail.com\",\r\n    \"password\":\"zen098\",\r\n    \"username\": \"zen4\",\r\n    \"first_name\": \"zen4\"\r\n}",
+					"raw": "{\r\n    \"email\":\"ben5@mail.com\",\r\n    \"password\":\"zen098\",\r\n    \"username\": \"ben5\",\r\n    \"role\":\"viewer\",\r\n    \"first_name\": \"ben5\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\":\"zen4@mail.com\",\r\n    \"password\":\"zen098\"\r\n}",
+					"raw": "{\r\n    \"email\":\"ben1@mail.com\",\r\n    \"password\":\"zen098\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -71,7 +71,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{devBaseURL}}/user/?search=",
+					"raw": "{{devBaseURL}}/user/?search=ben3",
 					"host": [
 						"{{devBaseURL}}"
 					],
@@ -82,7 +82,7 @@
 					"query": [
 						{
 							"key": "search",
-							"value": ""
+							"value": "ben3"
 						}
 					]
 				}
@@ -95,13 +95,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{devBaseURL}}/friend-requests/",
+					"raw": "{{devBaseURL}}/friend-requests?ordering=-sent_at",
 					"host": [
 						"{{devBaseURL}}"
 					],
 					"path": [
-						"friend-requests",
-						""
+						"friend-requests"
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "-sent_at"
+						}
 					]
 				}
 			},
@@ -132,7 +137,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"receiver\":3\r\n}",
+					"raw": "{\r\n    \"receiver\":5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,12 +145,94 @@
 					}
 				},
 				"url": {
-					"raw": "{{devBaseURL}}/friend-requests/",
+					"raw": "{{devBaseURL}}/friend-request/",
 					"host": [
 						"{{devBaseURL}}"
 					],
 					"path": [
-						"friend-requests",
+						"friend-request",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Block User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"blocked_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/block/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"block",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNjkzOTk1MywiaWF0IjoxNzI2ODUzNTUzLCJqdGkiOiI4OGE1Y2ZkMTAyOTk0ZWMwYTk2ZDM0NDk2NzdlY2U1ZSIsInVzZXJfaWQiOjF9._fIbnsyOZdY_wY7ynqx4DWSYS4cbBDKIlxMImgw0jb0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/token/refresh/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Unblock User",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"blocked_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{devBaseURL}}/block/",
+					"host": [
+						"{{devBaseURL}}"
+					],
+					"path": [
+						"block",
 						""
 					]
 				}
@@ -182,16 +269,11 @@
 		}
 	],
 	"auth": {
-		"type": "apikey",
-		"apikey": [
+		"type": "bearer",
+		"bearer": [
 			{
-				"key": "value",
-				"value": "Token 20acad89a7e69ec8bd4591c52afbb1606b740afa",
-				"type": "string"
-			},
-			{
-				"key": "key",
-				"value": "Authorization",
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2OTQwODkzLCJpYXQiOjE3MjY4NTQ0OTMsImp0aSI6ImFlNGQxYzI0MjZiYjQ5MDA4ODhkYTllY2Y5Yjk1YjJlIiwidXNlcl9pZCI6M30.Z-kFBkdrPKGKN8qGhjck_PF9pfNz-TE2CXaxVsgPSjk",
 				"type": "string"
 			}
 		]
