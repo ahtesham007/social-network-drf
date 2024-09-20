@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, FriendRequest
+from .models import User, FriendRequest, BlockList
 # from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
@@ -9,9 +9,12 @@ class UserSerializer(serializers.ModelSerializer):
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
+    role = serializers.CharField(
+        required=True
+    )
     class Meta:
         model = User
-        fields = ['username', 'email', 'password', 'first_name', 'last_name']
+        fields = ['username', 'role', 'email', 'password', 'first_name', 'last_name']
 
     
     def create(self, validated_data):
@@ -19,6 +22,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'].lower(),
             password=validated_data['password'],
+            role=validated_data['role'],
             first_name=validated_data.get('first_name', ''),
             last_name=validated_data.get('last_name', '')
         )
@@ -51,3 +55,10 @@ class FriendRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = FriendRequest
         fields = '__all__'
+
+class BlockListSerializer(serializers.ModelSerializer):
+    blocked_id = serializers.IntegerField(required=True)
+    class Meta:
+        model = BlockList
+        fields = ['blocked_id', 'created_at']
+        

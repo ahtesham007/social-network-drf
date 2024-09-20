@@ -17,8 +17,39 @@ insensitive)
 - Users can not send more than 3 friend requests within a minute.
 
 ## Additional Features
+- Implemented token-based authentication (JWT) with token refreshing capabilities.
+
+- Implemented rate limiting to prevent brute-force attacks on login endpoints
+
+- Implemented role-based access control (RBAC) to restrict access to certain
+endpoints user functionality
+    - Viewer (can read)
+    - Editor (can read, write)
+    - Admin (can read, write and delete)
+
+- Ensured the search is optimized for large datasets.
+
+- Ensured atomic operations to handle race conditions when sending or accepting
+friend requests.
+
+- If a user rejects a friend request, the sender cannot send another request for a
+configurable cooldown period (e.g., 24 hours).
+
+- Implement caching for frequent queries for friend list endpoint.
+
+- Added a feature to block/unblock users, which prevents sending friend requests or
+viewing profiles.
+
+- Pagination and sorting options added for Pending Friend Requests.
+
+- Ensured that sensitive information about the requester is not exposed until the
+request is accepted.
+
+
+
+## Features Beyond Requirements
 - Logging
-- Test cases
+- Unit Tests
 - Security
 
 ## Pre-Requisite

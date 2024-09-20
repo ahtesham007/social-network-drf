@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
-from pathlib import Path    
+from pathlib import Path
+from datetime import  timedelta
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'core',
+    'rest_framework_simplejwt',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -63,13 +66,21 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication'
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated'
     ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '25/min',
+        'user': '30/min',  
+    },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10 
+    'PAGE_SIZE': 10 ,
 }
 
 WSGI_APPLICATION = 'social_network.wsgi.application'
@@ -177,3 +188,17 @@ LOGGING = {
         },
     },
 }
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY
+}
+
+# Set cooldown hours for Friend Request
+FRC_HOURS = 24
+
+CACHE_TTL = 60 * 15
