@@ -94,6 +94,8 @@ Make sure to use root as MySQL User (Might face connection issue)
 
 4. `docker-compose up --build -d` 
 
+5. Once MySQL server is up run this command `docker-compose exec db mysql -uroot -proot_password -e "GRANT ALL PRIVILEGES ON *.* TO 'mysql_username'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES;"`
+
 ## Run Test
 -  `python manage.py test` [Normal Scenario]
 -  `docker-compose exec web python manage.py test` [Setup with Docker]
