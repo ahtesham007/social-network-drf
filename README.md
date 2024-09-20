@@ -76,7 +76,7 @@ request is accepted.
 1. Clone this repository
 2. Move inside the social-network-drf directory
 3. Create a .env file & update these env variables:
-Make sure to use root as MySQL User (Might face connection issue)
+
     ```bash
     # MySQL Database variables
     MYSQL_ROOT_PASSWORD=
